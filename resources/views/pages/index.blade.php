@@ -9,7 +9,7 @@
         <p>Esta es una aplicación en línea para la inscripción de listas de cursos con respectivos roles</p>
         <div>
             <a class="btn btn-primary btn-lg" href="/login" role="button">Login</a>
-            <a class="btn btn-success btn-lg" href="/registrar" role="button">Registrar</a>
+            <a class="btn btn-success btn-lg" href="/register" role="button">Registrar</a>
         </div>
     </div>
     </div>    
