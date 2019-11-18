@@ -1,0 +1,19 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class ListasController extends Controller
+{
+    //aquí se crean las funciones principales de cada entidad/clase/objeto
+    index
+    create
+    store 
+    edit
+    update
+    show
+    destroy
+
+}
+
