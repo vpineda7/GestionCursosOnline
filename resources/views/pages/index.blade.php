@@ -8,8 +8,12 @@
     <div class="jumbotron text-center">
         <p>Esta es una aplicación en línea para la inscripción de listas de cursos con respectivos roles</p>
         <div>
-            <a class="btn btn-primary btn-lg" href="/login" role="button">Login</a>
-            <a class="btn btn-success btn-lg" href="/register" role="button">Registrar</a>
+            {{-- <a class="btn btn-primary btn-lg" href="/login" role="button">Login</a> --}}
+            {{-- <a class="btn btn-success btn-lg" href="/register" role="button">Estudiante</a> --}}
+            {{-- <a class="btn btn-success btn-lg" href="/register2" role="button">Profesor</a> --}}
+            <a class="btn btn-success btn-lg" href="{{url('/register/estudiante')}}" role="button">Estudiante</a>
+            <a class="btn btn-success btn-lg" href="{{url('/register/profesor')}}" role="button">Profesor</a>
+            
         </div>
     </div>
     </div>    

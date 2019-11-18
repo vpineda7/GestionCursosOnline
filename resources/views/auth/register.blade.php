@@ -25,21 +25,22 @@
                             </div>
                         </div>
 
-                        
+                        <div class="col-md-6">
+                            <input id="tipo" type="hidden" class="form-control @error('tipo') is-invalid @enderror" name="tipo" value="{{ $userType }}" required autocomplete="tipo" autofocus>
+                        </div>
+                    
                        <!-- se agregó campo extra-->     
-                       <div class="form-group row">
-                            <label for="tipo" class="col-md-4 col-form-label text-md-right">{{ __('Tipo') }}</label>
+                       {{-- <div class="form-group row" >
+                            {{-- <label for="tipo" class="col-md-4 col-form-label text-md-right">{{ __('Tipo') }}</label> --}}
 
-                            <div class="col-md-6">
-                                <input id="tipo" type="text" class="form-control @error('tipo') is-invalid @enderror" name="tipo" value="{{ old('tipo') }}" required autocomplete="tipo" autofocus>
 
-                                @error('tipo')
+                                {{-- @error('tipo')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                @enderror
-                            </div>
-                        </div>
+                                @enderror 
+                        </div> 
+                        --}}
                        <!-- se agregó campo extra-->     
 
 
