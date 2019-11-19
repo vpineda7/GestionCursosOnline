@@ -20,3 +20,9 @@ Auth::routes();
 Route::get('/register/{userType}', 'Auth\RegisterController@showRegistrationForm');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Route::post('/login/custom', 
+// [
+//     'uses' => 'LoginController@login',
+//     'as' => 'login.custom'
+// ]);
