@@ -20,6 +20,9 @@ class RedirectIfAuthenticated
         if (Auth::guard($guard)->check()) {
             return redirect('/home');
         }
+        if ($guard == "profesor" && Auth::guard($guard)->check()) {
+            return redirect('/profesor');
+        }
 
         return $next($request);
     }

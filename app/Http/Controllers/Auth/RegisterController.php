@@ -38,6 +38,7 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+        $this->middleware('guest:profesor');
     }
 
     /**
@@ -75,4 +76,23 @@ class RegisterController extends Controller
     public function showRegistrationForm($userType){
         return view('auth.register', compact('userType'));
     }
+
+    public function showProfesorRegisterForm()
+    {
+        return view('auth.register', ['url' => 'profesor']);
+    }
+
+    protected function createProfesor(Request $request)
+    {
+        $this->validator($request->all())->validate();
+        $profesor = Profesor::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'tipo' => $request['tipo'],
+            'password' => Hash::make($request['password']),
+        ]);
+        return redirect()->intended('login/profesor');
+    }
+
+
 }

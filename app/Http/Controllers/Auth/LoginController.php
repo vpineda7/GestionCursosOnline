@@ -36,6 +36,7 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+        $this->middleware('guest:profesor')->except('logout');
     }
 
     //custom function create at 18-11-19
@@ -55,5 +56,23 @@ class LoginController extends Controller
     //             return redirect()->route('home');
     //     }
     // }
+    public function showAdminLoginForm()
+    {
+        return view('auth.login', ['url' => 'profesor']);
+    }
+
+    public function adminLogin(Request $request)
+    {
+        $this->validate($request, [
+            'email'   => 'required|email',
+            'password' => 'required|min:6'
+        ]);
+
+        if (Auth::guard('profesor')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
+
+            return redirect()->intended('/profesor');
+        }
+        return back()->withInput($request->only('email', 'remember'));
+    }
 
 }
