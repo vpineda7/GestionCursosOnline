@@ -40,10 +40,19 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'profesor' => [
+            'driver' => 'session',
+            'provider' => 'profesores',
+        ],
 
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
+            'hash' => false,
+        ],
+        'profesor-api' => [
+            'driver' => 'token',
+            'provider' => 'profesores',
             'hash' => false,
         ],
     ],
@@ -70,6 +79,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
+        'profesores' => [
+            'driver' => 'eloquent',
+            'model' => App\Profesor::class,
+        ],
 
         // 'users' => [
         //     'driver' => 'database',
@@ -95,6 +108,11 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+        'profores' => [
+            'provider' => 'profesores',
             'table' => 'password_resets',
             'expire' => 60,
         ],

@@ -17,9 +17,11 @@ Route::get('/services', 'PagesController@services');
 
 Route::resource('listas', 'ListasController');
 Auth::routes();
-Route::get('/register/{userType}', 'Auth\RegisterController@showRegistrationForm');
+//Route::get('/register/{userType}', 'Auth\RegisterController@showRegistrationForm');
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/profesor', 'ProfesorController@index')->name('profesor');
+
 
 // Route::post('/login/custom', 
 // [
