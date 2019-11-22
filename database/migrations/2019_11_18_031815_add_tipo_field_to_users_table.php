@@ -15,7 +15,7 @@ class AddTipoFieldToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->string('tipo');
+            $table->string('tipo')->default('estudiante');
             
         });
     }

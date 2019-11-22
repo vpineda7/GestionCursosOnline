@@ -24,12 +24,14 @@
                                 @enderror
                             </div>
                         </div>
-
-                        <div class="col-md-6">
+                        {{-- funcionaba hasta el 20-11-19 --}}
+                        {{-- <div class="col-md-6">
                             <input id="tipo" type="hidden" class="form-control @error('tipo') is-invalid @enderror" name="tipo" value="{{ $userType }}" required autocomplete="tipo" autofocus>
                         </div>
-                    
-                       <!-- se agregó campo extra-->     
+                     --}}
+
+
+                       <!-- se agregó campo extra antiguo-->     
                        {{-- <div class="form-group row" >
                             {{-- <label for="tipo" class="col-md-4 col-form-label text-md-right">{{ __('Tipo') }}</label> --}}
 

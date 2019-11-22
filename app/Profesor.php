@@ -6,7 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class Profesor extends Authenticatable
 {
     use Notifiable;
 
@@ -18,8 +18,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'tipo' ,'email', 'password',
+        // 'name', 'tipo' ,'email', 'password',
+        'name','email', 'password',
     ];
+    
 
     /**
      * The attributes that should be hidden for arrays.
