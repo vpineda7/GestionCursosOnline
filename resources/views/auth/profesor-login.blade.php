@@ -5,10 +5,11 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+                {{-- <div class="card-header">{{ __('Login') }}</div> --}}
+                <div class="card-header">Login profesor</div>
 
                 <div class="card-body">
-                    <a>Profesor-login</a>
+                    {{-- <a>Profesor-login</a> --}}
                     <form method="POST" action="{{ route('profesor.login.submit') }}">
                     {{-- <form method="POST" action="{{ route('login.custom') }}"> --}}
                         @csrf

@@ -15,6 +15,13 @@
                     @endif
 
                     You are logged in as <strong>Profesor</strong>!
+                    <br>
+                    <br>
+                    <br>
+                    {{-- <div class="container mt-3">
+                        @yield('content')    
+                    </div>   --}}
+                        
                 </div>
             </div>
         </div>
