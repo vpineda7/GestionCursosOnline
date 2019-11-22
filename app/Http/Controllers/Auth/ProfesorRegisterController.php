@@ -3,12 +3,16 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Profesor;//agregado el 22-11-19
+use Illuminate\Http\Request; //agregado el 22-11-19
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
-class RegisterController extends Controller
+use Auth;
+
+class ProfesorRegisterController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
@@ -21,14 +25,14 @@ class RegisterController extends Controller
     |
     */
 
-    use RegistersUsers;
+    //use RegistersUsers;
 
     /**
      * Where to redirect users after registration.
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/profesor';
 
     /**
      * Create a new controller instance.
@@ -37,7 +41,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('guest:profesor');
     }
 
     /**
@@ -60,11 +64,11 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\User
+     * @return \App\Profesor
      */
     protected function create(array $data)
     {
-        return User::create([
+        return Profesor::create([
             'name' => $data['name'],
             // 'tipo' => $data['tipo'],
             'email' => $data['email'],
@@ -75,6 +79,32 @@ class RegisterController extends Controller
     // public function showRegistrationForm($userType){
     //     return view('auth.register', compact('userType'));
     // } 
+    public function showRegistrationForm() {
+        return view('auth/profesor-register');
+    }
 
-    
+    public function register(Request $request)
+    {
+       //Validates data
+        $this->validator($request->all())->validate();
+
+       //Create profesor
+        $profesor = $this->create($request->all());
+
+        //Authenticates profesor
+        $this->guard()->login($profesor);
+
+       //Redirects profesor
+        //return redirect($this->$redirectTo);
+        return redirect()->intended(route('profesor_dashboard'));
+        // if(Auth::guard('profesor')-> attempt(['email' => $request->email, 'password' => $request->password],$request->remember)){
+        //     //if suseccefull, then redirect to their intendent location 
+        //     // return redirect()->intended(route('profesor.dashboard'));
+        //     return redirect()->intended(route('profesor_dashboard'));
+        // }
+    }
+    protected function guard(){
+        return Auth::guard('profesor');
+    }
+
 }

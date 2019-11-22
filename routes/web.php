@@ -22,15 +22,17 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-    Route::prefix('profesor') -> group(function(){
-        Route::get('/login','Auth\ProfesorLoginController@showLoginForm')->name('profesor.login');
-        Route::post('/login','Auth\ProfesorLoginController@login')->name('profesor.login.submit');
-        // Route::post('/logout','Auth\ProfesorLoginController@logout')->name('profesor.login.logout');
-        Route::get('/', 'ProfesorController@index')->name('profesor_dashboard');
-    });
+Route::prefix('profesor') -> group(function(){
+    Route::get('/login','Auth\ProfesorLoginController@showLoginForm')->name('profesor.login');
+    Route::post('/login','Auth\ProfesorLoginController@login')->name('profesor.login.submit');
+    // Route::post('/logout','Auth\ProfesorLoginController@logout')->name('profesor.login.logout');
+    Route::get('/', 'ProfesorController@index')->name('profesor_dashboard');
+});
 // Route::post('/login/custom', 
 // [
 //     'uses' => 'LoginController@login',
 //     'as' => 'login.custom'
 // ]);
 //Route::get('logout', 'Auth\LoginController@logout');
+Route::get('/register/profesor', 'Auth\ProfesorRegisterController@showRegistrationForm');
+Route::post('/register/profesor', 'Auth\ProfesorRegisterController@register')->name('register.profesor');
