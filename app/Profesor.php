@@ -1,7 +1,7 @@
 <?php
 
 namespace App;
-
+use App\Cursos;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -40,4 +40,12 @@ class Profesor extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function cursos(){
+        return $this->hasMany('Cursos', 'owner_id');
+        //return $this->hasMany('Cursos');
+        //return $this->hasMany(Cursos::class);
+
+        
+    }
 }
