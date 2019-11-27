@@ -4,7 +4,7 @@ use Validator, Redirect;
 use App\Listas;
 use App\User;
 use DB;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -28,7 +28,9 @@ class HomeController extends Controller
     {
     //     $cursos = Listas::where('user_id', auth()->user()->id)->get();
     //     return view('home')-> with('cursos', $cursos);
-        $user_id=$request->user_id;
+        // $user_id=$request->id;
+        $user_id=Auth::user()->id;
+        
         $cursos = DB::table('listas')
             ->select('cursos.*')
             ->join('cursos', 'listas.curso_id', '=', 'cursos.id')
