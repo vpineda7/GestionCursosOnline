@@ -15,7 +15,7 @@
             {{-- <a class="btn btn-success btn-lg" href="{{url('/register/estudiante')}}" role="button">Estudiante</a>
             <a class="btn btn-success btn-lg" href="{{url('/register/profesor')}}" role="button">Profesor</a> --}}
             <a class="btn btn-success btn-lg" href="{{ route('register') }}" role="button">Estudiante</a>
-            <a class="btn btn-success btn-lg" href="{{ route('register.profesor') }}" role="button">Profesor</a>
+            <a class="btn btn-primary btn-lg" href="{{ route('register.profesor') }}" role="button">Profesor</a>
             
             
             

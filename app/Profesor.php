@@ -43,9 +43,8 @@ class Profesor extends Authenticatable
 
     public function cursos(){
         return $this->hasMany('Cursos', 'owner_id');
-        //return $this->hasMany('Cursos');
-        //return $this->hasMany(Cursos::class);
-
         
     }
+    
+
 }

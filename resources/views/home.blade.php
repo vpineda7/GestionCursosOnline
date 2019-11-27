@@ -14,7 +14,8 @@
                         </div>
                     @endif
 
-                    You are logged in home!
+                    Usted ha ingresado como estudiante
+                    @include('cursos2')
                 </div>
             </div>
         </div>

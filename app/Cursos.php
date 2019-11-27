@@ -40,8 +40,14 @@ class Cursos extends Model
     //       return Cursos::all();
     //  }
  
-    // public function profesors() {
-    //     // return $this->belongsTo('Profesor', 'Profesors');
-    //     return $this->belongsToMany('Profesor','id');
-    // }    
+    public function profesors() {
+        // return $this->belongsTo('Profesor', 'Profesors');
+        return $this->belongsToMany('Profesor','id');
+    }   
+    
+    public function listas()
+    {
+        return $this->hasMany('App\Listas');
+    }
+
 }

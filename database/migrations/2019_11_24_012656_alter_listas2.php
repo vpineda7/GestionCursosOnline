@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateListasTable extends Migration
+class AlterListas2 extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateListasTable extends Migration
      */
     public function up()
     {
-        Schema::create('listas', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('nombre_curso');
-            $table->tring('decripcion');
-            $table->timestamps();
-
+        Schema::table('listas', function (Blueprint $table) {
+            //
+            $table->dropColumn('nombre_curso');
+            $table->dropColumn('descripcion');
         });
     }
 
@@ -29,6 +27,8 @@ class CreateListasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('listas');
+        Schema::table('listas', function (Blueprint $table) {
+            //
+        });
     }
 }

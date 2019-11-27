@@ -119,8 +119,8 @@
                       </a>
                     
                       <a class="nav-link" href="\about">Acerca</a>
-                      <a class="nav-link" href="\services">Servicios</a>
-                      <a class="nav-link" href="\services">Precios</a>
+                      <a class="nav-link" href="\help">Ayuda</a>
+                      {{-- <a class="nav-link" href="\services">Precios</a> --}}
                       
                     </div>  
                     

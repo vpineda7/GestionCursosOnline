@@ -14,8 +14,8 @@
                         </div>
                     @endif
 
-                    You are logged in as <strong>Profesor</strong>!
-                    <a href="#" class="btn float-right btn-primary">¡Crear curso!</a>
+                    Usted ha ingresado como <strong>Profesor</strong>!
+                    <a href="{{url('/crear_curso')}}" class="btn btn-success  float-right btn-primary">¡Crear curso!</a>
                 
                     @include('cursos')
                     
