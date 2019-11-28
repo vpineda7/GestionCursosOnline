@@ -3,7 +3,9 @@ namespace App\Http\Controllers;
 use Validator, Input, Redirect; 
 use App\Cursos;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
+
 
 class CursosController extends Controller
 {
@@ -42,11 +44,23 @@ class CursosController extends Controller
                 ->withErrors($validator);
         }
 
-        $task = new Cursos;
-        $task->nombre_curso = $request->nombre_curso;
-        $task->descripcion = $request->descripcion;
-        $task->owner_id = Auth::user()->id;
-        $task->save();
+        $curso = new Cursos;
+        $curso->nombre_curso = $request->nombre_curso;
+        $curso->descripcion = $request->descripcion;
+        $curso->owner_id = Auth::user()->id;
+        $curso->save();
+
+        $to_name = Auth::user()->name;
+        $to_email = Auth::user()->email;
+        $data2 = array('name'=>$to_name, 'nombre_curso' => $curso['nombre_curso'], 'descripcion'=>$curso['descripcion']);
+        $template= 'mail_crear_curso'; // resources/views/mail/xyz.blade.php
+        Mail::send($template, $data2, function($message) use ($to_name, $to_email) {
+            $message->to($to_email, $to_name)
+                    ->subject('Creación de curso en el Sistema de Gestion en linea de cursos online');
+            $message->from('gestiondecursosenlinea@gmail.com','Gestión de Cursos en Linea');
+        });
+
+
         return redirect('profesor');
 
     }

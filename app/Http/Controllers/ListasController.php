@@ -4,9 +4,12 @@
 namespace App\Http\Controllers;
 use Validator, Redirect; 
 use App\Listas;
+use App\Cursos;
 use App\User;
 use DB;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 
 class ListasController extends Controller
@@ -116,6 +119,22 @@ class ListasController extends Controller
         $lista->user_id = $request->id;
         $lista->solicitud_baja= 0;
         $lista->save();
+
+        $user = User::findOrFail($lista['user_id']);
+        $to_name = $user['name'];
+        $to_email = $user['email'];
+        $curso =  Cursos::findOrFail($curso_id);
+        $data2 = array('name'=>$to_name, 'nombre_curso' => $curso['nombre_curso'], 'descripcion'=>$curso['descripcion']);
+        $template= 'mail_agregar_curso'; // resources/views/mail/xyz.blade.php
+        Mail::send($template, $data2, function($message) use ($to_name, $to_email) {
+            $message->to($to_email, $to_name)
+                    ->subject('Creación de curso en el Sistema de Gestion en linea de cursos online');
+            $message->from('gestiondecursosenlinea@gmail.com','Gestión de Cursos en Linea');
+        });
+
+
+
+        
         return redirect('profesor');
         
         // return Response()->json($request);

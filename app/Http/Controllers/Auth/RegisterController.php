@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Mail;
 
 class RegisterController extends Controller
 {
@@ -64,12 +65,26 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $to_name = $data['name'];
+        $to_email = $data['email'];
+        $data2 = array('name'=>$data['name'], "body" => "Test mail");
+        $template= 'mail_bienvenida'; // resources/views/mail/xyz.blade.php
+        Mail::send($template, $data2, function($message) use ($to_name, $to_email) {
+            $message->to($to_email, $to_name)
+                    ->subject('Bienvenido al Sistema de Gestión en línea de cursos online');
+            $message->from('gestiondecursosenlinea@gmail.com','Gestión de Cursos en Linea');
+        });
+
+        
         return User::create([
             'name' => $data['name'],
             // 'tipo' => $data['tipo'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+        
+
+
     }
 
     // public function showRegistrationForm($userType){

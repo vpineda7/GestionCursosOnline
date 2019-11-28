@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Buscar estudiantes para el curso:
-               <a class="btn btn-success  float-right" style="margin-right:10px" href="{{ URL::previous() }}">Regresar</a>
+               <a class="btn btn-success  float-right" style="margin-right:10px" href="{{ url('/profesor') }}">Regresar</a>
                 
                 </div>
                 <br>

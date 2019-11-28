@@ -46,3 +46,5 @@ Route::delete('/curso/{curso_id}/{lista_id}', 'ListasController@destroy');//Dele
 Route::get('/curso/main_search/{curso_id}', 'ListasController@main_search');//Main Search Listas
 Route::get('/curso/search/{curso_id}', 'ListasController@search');//Search Listas
 // Route::post('/curso/search/{curso_id}', 'ListasController@mostrar_resultado');//Mostrar resultado
+
+Route::get('/home/send_email', 'HomeController@send_email');

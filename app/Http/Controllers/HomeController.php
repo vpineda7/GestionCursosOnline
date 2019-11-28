@@ -6,6 +6,7 @@ use App\User;
 use DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
@@ -40,5 +41,18 @@ class HomeController extends Controller
         
         return view('home')-> with('cursos', $cursos);
 
+    }
+
+    public function send_email(){
+        
+        $to_name = 'Vladimir';
+        $to_email = 'vladimir.pineda7@gmail.com';
+        $data = array('name'=>"Sam Jose", "body" => "Test mail");
+        $template= 'mail'; // resources/views/mail/xyz.blade.php
+        Mail::send($template, $data, function($message) use ($to_name, $to_email) {
+            $message->to($to_email, $to_name)
+                    ->subject('Artisans Web Testing Mail');
+            $message->from('gestiondecursosenlinea@gmail.com','Artisans Web');
+        });
     }
 }
