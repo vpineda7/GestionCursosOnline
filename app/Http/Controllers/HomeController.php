@@ -33,7 +33,7 @@ class HomeController extends Controller
         $user_id=Auth::user()->id;
         
         $cursos = DB::table('listas')
-            ->select('cursos.*')
+            ->select('*')
             ->join('cursos', 'listas.curso_id', '=', 'cursos.id')
             ->join('users', 'listas.user_id', '=', 'users.id')
             ->where('listas.user_id', '=', $user_id)

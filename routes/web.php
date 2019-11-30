@@ -20,7 +20,8 @@ Auth::routes();
 //Route::get('/register/{|}', 'Auth\RegisterController@showRegistrationForm');
 //Route::get('/register/', 'Auth\RegisterController@showRegistrationForm');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');//home del estudiante
+Route::get('/home/curso/{curso_id}/dar_de_baja', 'HomeController@dar_de_baja');//dar de baja al estudiante
 
 Route::prefix('profesor') -> group(function(){
     Route::get('/login','Auth\ProfesorLoginController@showLoginForm')->name('profesor.login');

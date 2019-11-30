@@ -9,11 +9,11 @@
 <div class="row">
     @foreach ($cursos as $curso)
         <div class="col-sm-6" >
-            <div class="card" style="margin-bottom:20px;">
+        <div class="card" style="margin-bottom:20px;" id=@if (($curso->solicitud_baja)==0) "baja_no" @else "baja_si" @endif>
               <div class="card-body" style="height: 200px;">
                 <h5 class="card-title">{{$curso->nombre_curso}}</h5>
                 <p class="card-text">{{$curso->descripcion}}</p>
-                <form action="{{ url('curso/'.$curso->id) }}" method="POST">
+                <form action="{{ url('curso/'.$curso->id).'/dar_de_baja' }}" method="POST">
                     {{-- <a href="{{url('curso/'.$curso->id)}}" class="btn btn-primary">Ver</a> --}}
                     <a href="#" class="btn btn-primary">Ver</a>
 
